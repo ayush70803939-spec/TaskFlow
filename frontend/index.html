@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow | Task Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✓</div>
+
+            <div>
+                <h2>TaskFlow</h2>
+                <span>Workspace</span>
+            </div>
+        </div>
+
+
+        <nav>
+
+            <a class="nav-item active" href="#">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a class="nav-item" href="#tasks">
+                <span>☑</span>
+                My Tasks
+            </a>
+
+            <a class="nav-item" href="#projects">
+                <span>▣</span>
+                Projects
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="user-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Ayush</strong>
+                    <small>Task Manager</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Good morning, Ayush 👋
+                </h1>
+
+                <p>
+                    Manage your tasks and stay productive.
+                </p>
+
+            </div>
+
+
+            <button
+                class="refresh-btn"
+                onclick="loadTasks()"
+            >
+                ↻ Refresh
+            </button>
+
+        </header>
+
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon total">
+                    ▣
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Tasks
+                    </span>
+
+                    <strong id="totalTasks">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon progress">
+                    ◷
+                </div>
+
+                <div>
+
+                    <span>
+                        In Progress
+                    </span>
+
+                    <strong id="progressTasks">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon completed">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <strong id="completedTasks">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon high">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        High Priority
+                    </span>
+
+                    <strong id="highTasks">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             CREATE TASK
+        ========================== -->
+
+        <section class="add-task-card">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Create a New Task
+                    </h2>
+
+                    <p>
+                        Add a task to your TaskFlow workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-grid">
+
+
+                <div class="input-group full">
+
+                    <label>
+                        Task Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="e.g. Complete frontend design"
+                    >
+
+                </div>
+
+
+
+                <div class="input-group full">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Describe your task..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Priority
+                    </label>
+
+                    <select id="priority">
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                        <option
+                            value="medium"
+                            selected
+                        >
+                            Medium
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="todo">
+                            Todo
+                        </option>
+
+                        <option value="in-progress">
+                            In Progress
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="due_date"
+                    >
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Owner ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="owner_id"
+                        value="3"
+                    >
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Project ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="project_id"
+                        value="1"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="createTask()"
+                >
+                    + Add Task
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             MY TASKS
+        ========================== -->
+
+        <section
+            class="tasks-section"
+            id="tasks"
+        >
+
+
+            <div class="section-heading task-heading">
+
+                <div>
+
+                    <h2>
+                        My Tasks
+                    </h2>
+
+                    <p>
+                        Your latest tasks are shown below.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadTasks()"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+
+            <div id="taskList">
+
+                <div class="loading">
+                    Loading tasks...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section
+            class="projects-section"
+            id="projects"
+        >
+
+
+            <div class="section-heading project-heading">
+
+                <div>
+
+                    <h2>
+                        Projects
+                    </h2>
+
+                    <p>
+                        Manage your TaskFlow projects.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadProjects()"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+
+            <!-- Create Project -->
+
+            <div class="add-task-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Create a New Project
+                        </h2>
+
+                        <p>
+                            Add a project to organize your tasks.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group full">
+
+                        <label>
+                            Project Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="projectName"
+                            placeholder="e.g. Website Development"
+                        >
+
+                    </div>
+
+
+
+                    <div class="input-group full">
+
+                        <label>
+                            Project Description
+                        </label>
+
+                        <textarea
+                            id="projectDescription"
+                            placeholder="Describe your project..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Owner ID
+                        </label>
+
+                        <input
+                            type="number"
+                            id="projectOwnerId"
+                            value="3"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-actions">
+
+                    <button
+                        class="primary-btn"
+                        onclick="createProject()"
+                    >
+                        + Create Project
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Project List -->
+
+            <div id="projectList">
+
+                <div class="loading">
+                    Loading projects...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
