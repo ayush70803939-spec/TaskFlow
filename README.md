@@ -75,3 +75,6 @@ TaskFlow/
 ├── .gitignore
 ├── README.md
 └── taskflow.db
+
+TaskFlow project submission.
+All application components are maintained in this repository.
